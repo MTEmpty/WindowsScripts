@@ -2,6 +2,8 @@
 
 These are some of the packages that I use
 
+To update all packages, use `choco upgrade -y all`
+
 ## General use
 
 This package is not approved yet, but should be soon
