@@ -9,6 +9,9 @@ To update all packages, use `choco upgrade -y all`
 This package is not approved yet, but should be soon
 <https://chocolatey.org/packages/voicemeeter-banana>
 
+This packages doesn't quite work ... but tracking it for now
+choco install -y vb-cable
+
 choco install -y libreoffice-still
 
 choco install -y brave
