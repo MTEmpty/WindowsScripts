@@ -14,6 +14,8 @@ choco install -y vb-cable
 
 choco install -y libreoffice-still
 
+choco install -y xournalplusplus
+
 choco install -y brave
 
 choco install -y firefox
