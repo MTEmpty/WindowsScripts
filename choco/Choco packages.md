@@ -55,3 +55,7 @@ choco install -y audacity-lame
 ## Streaming
 
 choco install -y obs-studio
+
+## Misc
+
+choco install -y powertoys
