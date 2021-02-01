@@ -24,6 +24,8 @@ choco install -y googlechrome
 
 choco install -y vlc
 
+choco install -y choco-cleaner
+
 ## Coding and general tech
 
 choco install -y vscode /NoDesktopIcon
