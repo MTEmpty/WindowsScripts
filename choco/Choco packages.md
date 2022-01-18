@@ -61,3 +61,7 @@ choco install -y obs-studio
 ## Misc
 
 choco install -y powertoys
+
+choco install ffmpeg
+
+choco install youtube-dl
