@@ -1,0 +1,6 @@
+# Config files
+*.ini
+config.json
+
+# Caches
+*/__pycache__/*
