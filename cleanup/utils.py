@@ -1,5 +1,5 @@
-import configparser
 import json
+import time
 
 
 def get_config():
@@ -16,3 +16,15 @@ def get_cleanup_targets(config):
         # print('This is what I am getting', f.read())
         cleanup_config = json.load(f)
     return cleanup_config
+
+
+def current_time():
+    return time.time()
+
+
+def seconds_to_days(seconds, round=False):
+    if round is True:
+        days = int(seconds/86400)
+    else:
+        days = seconds/86400
+    return days

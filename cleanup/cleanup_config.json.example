@@ -1,20 +1,24 @@
 {
 	"paths": {
 		"temp choco files": {
-			"path": r"C:\Users\Matt\AppData\Local\Temp\chocolatey",
-            "delete_empty_folder": False
+			"path": "C:\\Users\\Matt\\AppData\\Local\\Temp\\chocolatey",
+            "delete_empty_folder": false,
+			"age_threshold": 30
 		},
 		"local temp": {
-            "path": r"C:\Users\Matt\AppData\Local\Temp",
-            "delete_empty_folder": True
+            "path": "C:\\Users\\Matt\\AppData\\Local\\Temp",
+            "delete_empty_folder": true,
+			"age_threshold": 30
         },
 		"local temp 2": {
-            "path": r"C:\Users\Matt\AppData\LocalLow\Temp",
-            "delete_empty_folder": True
+            "path": "C:\\Users\\Matt\\AppData\\LocalLow\\Temp",
+            "delete_empty_folder": true,
+			"age_threshold": 30
         },
 		"Downloads": {
-            "path": r"C:\Users\Matt\Downloads",
-            "delete_empty_folder": True
+            "path": "C:\\Users\\Matt\\Downloads",
+            "delete_empty_folder": true,
+			"age_threshold": 30
         }
 	}
 }
