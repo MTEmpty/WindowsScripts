@@ -14,3 +14,8 @@ The two configuration files required are:
   - This file contains general configs
 - cleanup_config.json
   - This contains list of paths to be cleaned up and how they will be cleaned.
+
+## Tests
+
+Run the tests before using the cleanup tool.
+Tests can be run by running `pytest tests.py` while in the `cleanup` directory
