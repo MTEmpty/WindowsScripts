@@ -29,12 +29,27 @@ def delete_folder(folder):
         return True
 
 
+def archive_file(old_file, new_file):
+    try:
+        os.rename(old_file, new_file)
+    except PermissionError:
+        pass
+    except Exception as e:
+        print(f'Failed to move files to archive: {str(e)}')
+    else:
+        return True
+
+
 class Cleaner:
     def __init__(self, config):
         self.path = config.get('path')
+        self.action = config.get('action', 'delete')
         self.threshold = config.get('age_threshold')
         self.delete_empty_folder = config.get('delete_empty_folder')
         self.current_time = current_time()
+
+        if self.action == 'archive':
+            self.archive_path = config.get('archive_path')
 
         self.total_directories = 0
         self.total_objects = 0
@@ -47,8 +62,10 @@ class Cleaner:
 
         # list of items to be deleted
         self.delete_file_list = []
-
         self.delete_folder_list = []
+
+        # list of items to be archived
+        self.archive_file_list = []
 
     def cleanup_items(self):
         for item in self.items:
@@ -71,6 +88,10 @@ class Cleaner:
         for folder in self.delete_folder_list:
             delete_folder(folder)
 
+        for file in self.archive_file_list:
+            new_path = file.replace(self.path, self.archive_path)
+            archive_file(file, new_path)
+
     def _classify_file(self, item_path, file_name):
         path_to_file = os.path.join(item_path, file_name)
         
@@ -79,8 +100,11 @@ class Cleaner:
         age_days = seconds_to_days(age_seconds)
         if age_days > self.threshold:
             self.old_objects += 1
-            self.delete_file_list.append(path_to_file)
-            # print(path_to_file)
+            if self.action == 'delete':
+                self.delete_file_list.append(path_to_file)
+            elif self.action == 'archive' and self.archive_path not in path_to_file:
+                self.archive_file_list.append(path_to_file)
+                print(path_to_file)
 
     def _classify_directory(self, item_path):
         last_modified_epoch = file_age(item_path)
