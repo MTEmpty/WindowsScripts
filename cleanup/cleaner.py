@@ -98,13 +98,16 @@ class Cleaner:
         last_modified_epoch = file_age(path_to_file)
         age_seconds = self.current_time - last_modified_epoch
         age_days = seconds_to_days(age_seconds)
-        if age_days > self.threshold:
+        old_item = age_days > self.threshold
+        if self.action == 'delete' and old_item is True:
             self.old_objects += 1
-            if self.action == 'delete':
-                self.delete_file_list.append(path_to_file)
-            elif self.action == 'archive' and self.archive_path not in path_to_file:
-                self.archive_file_list.append(path_to_file)
-                print(path_to_file)
+            self.delete_file_list.append(path_to_file)
+        elif (self.action == 'archive'
+                and self.archive_path not in path_to_file
+                and old_item is True):
+            self.old_objects += 1
+            self.archive_file_list.append(path_to_file)
+            print(path_to_file)
 
     def _classify_directory(self, item_path):
         last_modified_epoch = file_age(item_path)
